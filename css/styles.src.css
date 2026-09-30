@@ -1,0 +1,270 @@
+/* Self-hosted fonts (SIL Open Font License), Latin subsets. */
+@font-face{font-family:"Bebas Neue";src:url("../fonts/BebasNeue-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Urbanist";src:url("../fonts/Urbanist-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Shippori Mincho";src:url("../fonts/ShipporiMincho-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Shippori Mincho";src:url("../fonts/ShipporiMincho-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Shippori Mincho";src:url("../fonts/ShipporiMincho-ExtraBold.woff2") format("woff2");font-weight:800;font-display:swap}
+
+/* ============================================================
+   Quoc Huy portfolio. Source authored in Figma px at 1920 wide.
+   u(N) tokens are expanded to calc(N * var(--u)) by scripts/build-css.py
+   so the desktop layout scales proportionally with the viewport.
+   ============================================================ */
+:root{
+  --u: calc(min(100vw, 2560px) / 1920);
+  --ink:#030306; --gold:#eac656; --cream:#d6d9aa;
+  --f-display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --f-body:"Urbanist","Helvetica Neue",Arial,sans-serif;
+  --f-head:Arial,"Liberation Sans",Arimo,Helvetica,sans-serif;
+  --f-mono:"Shippori Mincho","Noto Serif JP",Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:#fff;font-family:var(--f-body);overflow-x:clip}
+h1,h2,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+img{display:block}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* ---------- absolute-layout helpers (values come from inline --x/--y/--w/--h in design px) ---------- */
+.stage{position:relative;height:calc(var(--H) * var(--u));overflow:hidden;background:var(--ink)}
+.site-bg{background:var(--ink) url(../assets/backgroud-tile.jpg) repeat-y center top;background-size:100% auto}
+.site-bg > .stage,.site-bg > main > .stage{background:transparent}
+.site-bg > main > .credentials{background:#000}
+.site-bg > main > .credentials::after{content:"";position:absolute;left:0;right:0;top:100%;height:u(80);background:linear-gradient(180deg,#000,rgba(0,0,0,0));pointer-events:none;z-index:5}
+[style*="--x:"]{position:absolute;left:calc(var(--x) * var(--u));top:calc(var(--y) * var(--u))}
+[style*="--w:"]{width:calc(var(--w) * var(--u))}
+[style*="--h:"]{height:calc(var(--h) * var(--u))}
+.anchor{position:absolute;left:0;top:calc(var(--y) * var(--u));width:1px;height:1px}
+
+/* image slot: real asset on top, tonal fallback underneath (visible if the file is missing) */
+.img{
+  background-image:var(--img, none), var(--fallback, linear-gradient(135deg,#1d2a1b,#0c120b));
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+}
+
+/* ---------- HERO ---------- */
+.hero-title{overflow:visible}
+.hero-title text{font-family:var(--f-display);font-size:409px;fill:#fff}
+
+.about .vf{width:u(187);height:u(59);border:0 solid rgba(255,255,255,.4)}
+.vf-tl{border-top-width:u(3);border-left-width:u(3)}
+.vf-tr{border-top-width:u(3);border-right-width:u(3)}
+.vf-bl{border-bottom-width:u(3);border-left-width:u(3)}
+.vf-br{border-bottom-width:u(3);border-right-width:u(3)}
+.vf-bat{display:flex;align-items:center;gap:u(21);height:u(45);font:600 u(16)/1.2 var(--f-mono);letter-spacing:.01em;color:rgba(255,255,255,.4)}
+.vf-bat .ic{width:u(45);height:u(45);opacity:.45}
+.vf-txt{font:500 u(16)/1.4 var(--f-mono);letter-spacing:.01em;color:rgba(255,255,255,.4)}
+.vf-iso{display:flex;flex-direction:column;gap:u(2)}
+.vf-auto{display:flex;align-items:center;justify-content:flex-end;gap:u(6);width:u(87);font-size:u(18)}
+.vf-auto .ic{width:u(24);height:u(24)}
+.vf-fstop{font-size:u(18)}
+.vf-rec{display:flex;align-items:center;justify-content:flex-end;gap:u(7);width:u(78);font-size:u(22);font-weight:800}
+.vf-rec i{width:u(19);height:u(19);border-radius:50%;background:#502b1c}
+.about-copy h2{font:400 u(55)/1.2 var(--f-display);letter-spacing:-.02em;margin-bottom:u(8)}
+.about-copy p{font:400 u(24)/1.21 var(--f-body);letter-spacing:.01em}
+
+.pt-base{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0));border-radius:u(10)}
+.pt-film,.pt-photo{background-size:100% 100%}
+.ic{display:inline-block;flex:none}
+.ic svg{display:block;width:100%;height:100%}
+
+.col .blk + .blk{margin-top:u(58)}
+.col h2{font:700 u(48)/1.146 var(--f-head);letter-spacing:-.02em;margin-bottom:u(16)}
+.rows{display:flex;flex-direction:column;gap:u(12)}
+.rows li{display:flex;align-items:center;gap:u(12);font:400 u(24)/1.21 var(--f-body);letter-spacing:.01em}
+.rows .ic{width:u(24);height:u(24)}
+.rows .mail{width:u(26)}
+.rows.plain li{display:block}
+.rows.plain li strong{font-weight:700}
+.chip{display:inline-flex;align-items:center;height:u(40);padding:u(5) u(12);border-radius:u(8);background:rgba(255,255,255,.4)}
+.rows.plain li:has(.chip){height:u(40)}
+.tools{display:grid;grid-template-columns:repeat(3,u(64));gap:u(16)}
+.tile{width:u(64);height:u(64);border-radius:u(11.636);background:#fff;display:grid;place-items:center}
+.tile svg{width:u(34);height:auto;max-height:u(34)}
+.tile.cam{background:none}
+.tile.cam svg{width:u(64);max-height:none}
+
+.col-b .blk:first-child h2{margin-bottom:0}
+.tl{display:flex;flex-direction:column;gap:u(40);margin-top:u(48)}
+.tl-i{position:relative}
+.tl-t{position:absolute;left:u(104);top:0;width:u(443);font:700 u(24)/1.21 var(--f-body);letter-spacing:.01em}
+.yr{position:absolute;left:0;top:calc(var(--t) * var(--u));width:u(56);text-align:right;font:700 u(24)/1.21 var(--f-body);letter-spacing:.01em}
+.ring{position:absolute;left:u(66);top:u(23);width:u(481);height:u(32);overflow:visible}
+.tl-d{position:absolute;left:u(104);top:calc(var(--t) * var(--u));width:u(443);font:400 u(24)/1.21 var(--f-body);letter-spacing:.01em}
+.tl-d p + p{margin-top:u(8)}
+.tl-d b{font-weight:700}
+
+/* ---------- TABS ---------- */
+.tabs{display:flex;border-radius:999px;background:rgba(255,255,255,.15);
+  box-shadow:inset 0 u(2) u(8) rgba(255,255,255,.25),inset 0 u(-2) u(8) rgba(255,255,255,.25);
+  -webkit-backdrop-filter:blur(u(12));backdrop-filter:blur(u(12))}
+.tabs--dark{background:rgba(0,0,0,.24)}
+.tabs .pill{position:absolute;left:0;top:0;height:100%;width:u(625);border-radius:999px;background:rgba(255,255,255,.15);transition:left .35s ease}
+.tabs:has(.tab[data-tab="1"].is-active) .pill{left:u(528)}
+.tabs:has(.tab[data-tab="2"].is-active) .pill{left:u(1057)}
+.tab{position:relative;z-index:1;flex:1;display:grid;place-items:center;font:400 u(40)/1.2 var(--f-body);letter-spacing:.01em;color:#fff}
+.tab.is-active{font-weight:700}
+.tab span{transition:transform .35s ease}
+.tab.is-active[data-tab="0"] span{transform:translateX(u(32))}
+.tab.is-active[data-tab="2"] span{transform:translateX(u(-30))}
+.tab:focus-visible{outline:2px solid var(--gold);outline-offset:-4px;border-radius:999px}
+
+/* ---------- SKILLS ---------- */
+.pill-lg{background:#353d28;border-radius:999px;box-shadow:0 u(6) u(8) #2b351b}
+.client{display:flex;align-items:center;gap:u(10);padding:0 u(24)}
+.client .ic{width:u(64);height:u(64)}
+.client span:last-child{font:400 u(56)/1.2 var(--f-body);letter-spacing:.01em}
+.logo{object-fit:contain}
+.logo-fallback{display:grid;place-items:center;font:600 u(18)/1.1 var(--f-body);text-align:center;color:#fff}
+.sk-col h2{font:700 u(48)/1.146 var(--f-head);letter-spacing:-.02em;color:var(--cream);margin-bottom:u(16)}
+.sk-col ul{display:flex;flex-direction:column;gap:u(12)}
+.sk-col li{font:400 u(32)/1.19 var(--f-body);letter-spacing:.01em;color:var(--cream)}
+
+/* ---------- PROJECTS ---------- */
+.pj-fade{background:linear-gradient(180deg,rgba(3,3,6,0),#030306)}
+.card{
+  background:rgba(255,255,255,.12);border-radius:u(38);padding:u(15.135);
+  box-shadow:0 u(11.35) u(11.35) rgba(0,0,0,.25),inset 0 u(7.57) u(7.57) rgba(255,255,255,.18),inset 0 u(-7.57) u(7.57) rgba(255,255,255,.08);
+  -webkit-backdrop-filter:blur(u(7.57));backdrop-filter:blur(u(7.57));
+}
+.card-img{height:u(510);border-radius:u(15)}
+.card-rule{border:0;border-top:u(3.78) solid #6a6b5e;border-radius:9px;width:u(216);margin:u(12) auto}
+.card-meta{padding:0 u(11.35)}
+.card-row{display:flex;align-items:center;justify-content:space-between;height:u(30);margin-bottom:u(7.57)}
+.card-brand{font:700 u(20)/1 var(--f-body)}
+.card-cap{font:400 u(23.6)/1.19 var(--f-body);color:var(--cream);letter-spacing:.01em}
+.badge{font:700 u(15)/1 var(--f-head);letter-spacing:.04em;padding:u(5) u(14);border-radius:999px;background:#ffc002;color:#111}
+.badge.verites{background:#e6e3d6;color:#4a4a3a;font:italic 500 u(16)/1 var(--f-mono);letter-spacing:.02em}
+.badge.luvmier{background:#dfe8f5;color:#2f4f86}
+.badge-img{height:u(20);width:auto;max-width:u(96)}
+.card-wide{display:flex;flex-direction:column;gap:u(32);padding-bottom:u(20)}
+.card-title{font:700 u(32)/1.17 var(--f-head);color:var(--cream);text-align:center}
+.etsuko-logo,.mascot,.brand-mark,.brand-logo{background-size:contain}
+.brand-pill{background:#fff;border-radius:u(64);display:grid;place-items:center}
+.desc-pill{display:flex;align-items:center;padding:u(4.7) u(11.35);border-radius:999px;font:600 u(22.7)/1.2 var(--f-body);color:#fff;white-space:nowrap}
+.desc-pill.dark{background:rgba(0,0,0,.4)}
+.desc-pill.tint-a{background:linear-gradient(90deg,#8a8f4a,#3c4620)}
+.desc-pill.tint-b{background:#716d39}
+.desc{font:400 u(24)/1.21 var(--f-body);letter-spacing:.01em}
+.sep{border:0;border-top:u(8) solid rgba(255,255,255,.4);border-radius:9px}
+.thumb{border-radius:u(8)}
+.ph-meta p{display:flex;align-items:baseline;gap:u(16);font:400 u(32)/1.19 var(--f-body)}
+.ph-meta p + p{margin-top:u(16)}
+.ph-meta b{font:700 u(36)/1.14 var(--f-head)}
+.ph-meta.right{text-align:right}
+.ph-meta.right p{justify-content:flex-end}
+
+/* ---------- FOOTER ---------- */
+.thanks{font:400 u(300.8)/.7 var(--f-display);letter-spacing:-.01em;color:#fff}
+.ft-row{display:flex;align-items:center;justify-content:space-between;font:700 u(32)/1.16 var(--f-head);letter-spacing:-.02em}
+.soc{display:flex;align-items:center;gap:u(24)}
+.soc a{display:flex;align-items:center}
+.soc .ic{width:u(30);height:u(30)}
+.ft-row a:hover,.rows a:hover{opacity:.8}
+
+/* ============================================================
+   TABLET / MOBILE STUB
+   Flow layout so the page is usable below 1025px. Replace with
+   real tablet/mobile designs when they exist.
+   ============================================================ */
+@media (max-width:1024px){
+  :root{--m:20px;--u:1px}
+  .stage{height:auto;padding:56px var(--m)}
+  [style*="--x:"]{position:relative;left:auto;top:auto}
+  [style*="--w:"]{width:auto}
+  [style*="--h:"]{height:auto}
+  .anchor{position:absolute;top:0}
+  .stage > .hero-bg,.stage > .sk-bg,.stage > .pj-bg,.stage > .ph-bg,.stage > .ft-bg,.stage > .pj-fade,.stage > .cred-fade{position:absolute;inset:0;height:auto;width:auto}
+  .stage > .pj-bg ~ .pj-bg{display:none}
+  .hero{display:flex;flex-direction:column;gap:28px;padding-top:24px}
+  .hero-title{width:100%;height:auto;position:relative}
+  .about{height:auto;padding:24px 0}
+  .about .vf,.vf-bat,.vf-txt{display:none}
+  .about-copy h2{font-size:44px}.about-copy p{font-size:18px}
+  .portrait{position:relative;width:min(100%,380px);aspect-ratio:540/627;height:auto}
+  .portrait > *{position:absolute;left:calc(var(--x) / 540 * 100%);top:calc(var(--y) / 627 * 100%);width:calc(var(--w) / 540 * 100%);height:calc(var(--h) / 627 * 100%)}
+  .col h2,.sk-col h2{font-size:34px}
+  .rows li,.tl-t,.yr,.tl-d,.sk-col li,.desc{font-size:18px}
+  .tools{grid-template-columns:repeat(6,48px);gap:12px}.tile{width:48px;height:48px;border-radius:10px}.tile svg{width:26px}.tile.cam svg{width:48px}
+  .tl-i{height:auto;padding-bottom:6px}
+  .tl-t,.tl-d,.yr,.ring{position:static;width:auto}
+  .yr{display:inline-block;text-align:left;margin-right:8px}
+  .ring{display:none}
+  .tabs{height:auto;padding:6px;overflow-x:auto}
+  .tabs .pill{display:none}
+  .tab{padding:12px 16px;font-size:16px;white-space:nowrap;border-radius:999px}
+  .tab.is-active{background:rgba(255,255,255,.15)}
+  .tab.is-active span{transform:none!important}
+  .pill-lg.client{display:none}
+  .pill-lg.logos{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:center;padding:16px;height:auto}
+  .logo{position:static;height:34px;width:auto}
+  .sk-col{margin-top:24px}
+  .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+  .projects > *{grid-column:1/-1}
+  .projects > .card,.projects > .thumb{grid-column:auto}
+  .projects > .card-wide,.projects > .thumb-wide,.projects > .photo{grid-column:1/-1}
+  .card{padding:10px;border-radius:24px}.card-img{height:auto;aspect-ratio:288/510;border-radius:12px}
+  .card-rule{width:70%}.card-cap{font-size:14px}.card-brand{font-size:14px}.badge{font-size:11px;padding:4px 8px}
+  .card-row{height:auto;gap:6px}
+  .thumb{aspect-ratio:267/474}.thumb-wide{aspect-ratio:833/474}
+  .etsuko-logo,.mascot{height:120px}.brand-mark{height:56px}
+  .brand-pill{height:100px}.brand-logo{height:60px}
+  .desc-pill{white-space:normal;font-size:16px;border-radius:24px}
+  .photo{aspect-ratio:4/5;height:auto}
+  .ph-meta p{font-size:18px}.ph-meta b{font-size:22px}
+  .footer{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:24px}
+  .thanks{font-size:clamp(72px,22vw,180px);line-height:.8}
+  .ft-row{flex-direction:column;align-items:flex-start;gap:16px;font-size:20px}
+}
+
+/* the person layer sits on the same page texture as the sections below it; the tile is
+   bottom-aligned so that it continues seamlessly where .site-bg starts (the tile repeats) */
+.hero{background:var(--ink) url(../assets/backgroud-tile.jpg) repeat-y center bottom;background-size:100% auto}
+
+/* ---------- HERO person layer (sits under the TV artwork, inside .hero) ----------
+   assets/person2.png is the transparent reference hero foreground at 4x:
+   portrait + ghost name + "Video Editor"/"5+ years" pills + selection frame
+   + lime handles + cursor + bottom fade, in a 1920 x 1106 box.
+   The artwork and the person are both pinned to the bottom edge of the hero
+   section, so the person composite reads as the lower half of the artwork. */
+.hero-bg{bottom:0;height:auto}
+.hero-person{top:auto;bottom:0;background-size:100% 100%;background-position:top center}
+.name-rule{display:flex;align-items:center;justify-content:center;position:relative}
+.name-rule .rule{
+  position:absolute; left:0; right:0; top:50%;
+  height:u(1); border:0; background:rgba(255,255,255,.55); margin:0;
+}
+.name-pill{
+  position:relative;
+  background:rgba(0,0,0,.55); backdrop-filter:blur(u(6));
+  color:#fff; font:400 u(24)/1.2 var(--f-body); letter-spacing:.02em;
+  padding:u(9) u(24); border-radius:999px;
+}
+
+/* ---------- CREDENTIALS (tools + soft skill row) ---------- */
+.credentials{overflow:visible;background:#000;isolation:isolate}
+/* soften the join between the dark hero bottom and the page texture below it */
+.cred-fade{background:linear-gradient(180deg,#030306 0%,rgba(3,3,6,0) 100%);pointer-events:none}
+.cred-h{font:800 u(72)/1.1 var(--f-head); letter-spacing:-.02em; color:#fff; margin-bottom:u(36)}
+.tools-lg{grid-template-columns:repeat(5,u(112));gap:u(28)}
+.tools-lg .tile{width:u(112);height:u(112);border-radius:u(22)}
+.tools-lg .tile svg{width:u(58);max-height:u(58)}
+.soft-grid{
+  list-style:none; padding:0; margin:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:u(18) u(40);
+}
+.soft-grid li{font:400 u(32)/1.25 var(--f-body); color:#fff; letter-spacing:.01em}
+@media (max-width:1024px){
+  .name-rule{display:none}
+  .credentials{height:auto;padding:56px var(--m)}
+  .hero-person{position:relative;width:100%;height:auto;aspect-ratio:1920/1106;left:auto;top:auto;bottom:auto}
+  .cred-tools,.cred-soft{position:relative;left:auto;top:auto;width:100%;height:auto}
+  .soft-grid{grid-template-columns:repeat(2,1fr)}
+  .tools-lg{grid-template-columns:repeat(5,56px);gap:12px}
+  .tools-lg .tile{width:56px;height:56px;border-radius:12px}
+  .tools-lg .tile svg{width:30px;max-height:30px}
+  .cred-h{font-size:36px}
+}
