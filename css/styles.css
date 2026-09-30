@@ -165,61 +165,6 @@ img{display:block}
 .soc .ic{width:calc(30 * var(--u));height:calc(30 * var(--u))}
 .ft-row a:hover,.rows a:hover{opacity:.8}
 
-/* ============================================================
-   TABLET / MOBILE STUB
-   Flow layout so the page is usable below 1025px. Replace with
-   real tablet/mobile designs when they exist.
-   ============================================================ */
-@media (max-width:1024px){
-  :root{--m:20px;--u:1px}
-  .stage{height:auto;padding:56px var(--m)}
-  [style*="--x:"]{position:relative;left:auto;top:auto}
-  [style*="--w:"]{width:auto}
-  [style*="--h:"]{height:auto}
-  .anchor{position:absolute;top:0}
-  .stage > .hero-bg,.stage > .sk-bg,.stage > .pj-bg,.stage > .ph-bg,.stage > .ft-bg,.stage > .pj-fade,.stage > .cred-fade{position:absolute;inset:0;height:auto;width:auto}
-  .stage > .pj-bg ~ .pj-bg{display:none}
-  .hero{display:flex;flex-direction:column;gap:28px;padding-top:24px}
-  .hero-title{width:100%;height:auto;position:relative}
-  .about{height:auto;padding:24px 0}
-  .about .vf,.vf-bat,.vf-txt{display:none}
-  .about-copy h2{font-size:44px}.about-copy p{font-size:18px}
-  .portrait{position:relative;width:min(100%,380px);aspect-ratio:540/627;height:auto}
-  .portrait > *{position:absolute;left:calc(var(--x) / 540 * 100%);top:calc(var(--y) / 627 * 100%);width:calc(var(--w) / 540 * 100%);height:calc(var(--h) / 627 * 100%)}
-  .col h2,.sk-col h2{font-size:34px}
-  .rows li,.tl-t,.yr,.tl-d,.sk-col li,.desc{font-size:18px}
-  .tools{grid-template-columns:repeat(6,48px);gap:12px}.tile{width:48px;height:48px;border-radius:10px}.tile svg{width:26px}.tile.cam svg{width:48px}
-  .tl-i{height:auto;padding-bottom:6px}
-  .tl-t,.tl-d,.yr,.ring{position:static;width:auto}
-  .yr{display:inline-block;text-align:left;margin-right:8px}
-  .ring{display:none}
-  .tabs{height:auto;padding:6px;overflow-x:auto}
-  .tabs .pill{display:none}
-  .tab{padding:12px 16px;font-size:16px;white-space:nowrap;border-radius:999px}
-  .tab.is-active{background:rgba(255,255,255,.15)}
-  .tab.is-active span{transform:none!important}
-  .pill-lg.client{display:none}
-  .pill-lg.logos{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:center;padding:16px;height:auto}
-  .logo{position:static;height:34px;width:auto}
-  .sk-col{margin-top:24px}
-  .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-  .projects > *{grid-column:1/-1}
-  .projects > .card,.projects > .thumb{grid-column:auto}
-  .projects > .card-wide,.projects > .thumb-wide,.projects > .photo{grid-column:1/-1}
-  .card{padding:10px;border-radius:24px}.card-img{height:auto;aspect-ratio:288/510;border-radius:12px}
-  .card-rule{width:70%}.card-cap{font-size:14px}.card-brand{font-size:14px}.badge{font-size:11px;padding:4px 8px}
-  .card-row{height:auto;gap:6px}
-  .thumb{aspect-ratio:267/474}.thumb-wide{aspect-ratio:833/474}
-  .etsuko-logo,.mascot{height:120px}.brand-mark{height:56px}
-  .brand-pill{height:100px}.brand-logo{height:60px}
-  .desc-pill{white-space:normal;font-size:16px;border-radius:24px}
-  .photo{aspect-ratio:4/5;height:auto}
-  .ph-meta p{font-size:18px}.ph-meta b{font-size:22px}
-  .footer{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:24px}
-  .thanks{font-size:clamp(72px,22vw,180px);line-height:.8}
-  .ft-row{flex-direction:column;align-items:flex-start;gap:16px;font-size:20px}
-}
-
 /* the person layer sits on the same page texture as the sections below it; the tile is
    bottom-aligned so that it continues seamlessly where .site-bg starts (the tile repeats) */
 .hero{background:var(--ink) url(../assets/backgroud-tile.jpg) repeat-y center bottom;background-size:100% auto}
@@ -257,14 +202,104 @@ img{display:block}
   display:grid; grid-template-columns:repeat(3,1fr); gap:calc(18 * var(--u)) calc(40 * var(--u));
 }
 .soft-grid li{font:400 calc(32 * var(--u))/1.25 var(--f-body); color:#fff; letter-spacing:.01em}
+
+/* ============================================================
+   TABLET / MOBILE  (1024px and down)
+   - hero: same artwork, scaled proportionally with the viewport (its text is baked into the images)
+   - everything else: normal flow layout, readable type sizes, 2-column card grids
+   ============================================================ */
 @media (max-width:1024px){
-  .name-rule{display:none}
-  .credentials{height:auto;padding:56px var(--m)}
-  .hero-person{position:relative;width:100%;height:auto;aspect-ratio:1920/1106;left:auto;top:auto;bottom:auto}
-  .cred-tools,.cred-soft{position:relative;left:auto;top:auto;width:100%;height:auto}
-  .soft-grid{grid-template-columns:repeat(2,1fr)}
-  .tools-lg{grid-template-columns:repeat(5,56px);gap:12px}
-  .tools-lg .tile{width:56px;height:56px;border-radius:12px}
-  .tools-lg .tile svg{width:30px;max-height:30px}
-  .cred-h{font-size:36px}
+  :root{--m:20px;--u:1px}
+  .stage{height:auto;padding:48px var(--m)}
+  [style*="--x:"]{position:relative;left:auto;top:auto}
+  [style*="--w:"]{width:auto}
+  [style*="--h:"]{height:auto}
+  .anchor{position:absolute;top:-70px}
+  .stage > .pj-fade{display:none}
+
+  /* HERO: keep the desktop composition, scaled to the screen width */
+  .hero{--u:calc(100vw / 1920);height:calc(var(--H) * var(--u));padding:0}
+  .hero [style*="--x:"]{position:absolute;left:calc(var(--x) * var(--u));top:calc(var(--y) * var(--u))}
+  .hero [style*="--w:"]{width:calc(var(--w) * var(--u))}
+  .hero [style*="--h:"]{height:calc(var(--h) * var(--u))}
+  .hero .hero-bg{top:0;bottom:0;height:auto}
+  .hero .hero-person{top:auto;bottom:0}
+
+  /* CREDENTIALS: tools, soft skills, clients */
+  .credentials{padding:40px var(--m) 56px;display:flex;flex-direction:column;gap:36px}
+  .cred-tools,.cred-soft{width:100%}
+  .cred-h{font-size:34px;margin-bottom:18px}
+  .tools-lg{grid-template-columns:repeat(5,minmax(0,60px));gap:12px}
+  .tools-lg .tile{width:100%;height:auto;aspect-ratio:1;border-radius:14px}
+  .tools-lg .tile svg{width:52%;max-height:52%}
+  .soft-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+  .soft-grid li{font-size:18px}
+  .pill-lg.client{display:inline-flex;align-self:flex-start;height:auto;padding:8px 20px 8px 14px;gap:8px}
+  .client .ic{width:28px;height:28px}
+  .client span:last-child{font-size:26px}
+  .pill-lg.logos{display:flex;flex-wrap:wrap;gap:18px 26px;justify-content:center;align-items:center;padding:18px 20px;border-radius:28px;height:auto}
+  .logo{position:static;height:32px;width:auto;max-width:42%}
+  .logo-fallback{position:static;font-size:14px}
+
+  /* TABS */
+  .skills{padding:32px var(--m) 8px}
+  .tabs{height:auto;padding:5px;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs .pill{display:none}
+  .tab{padding:12px 10px;font-size:15px;white-space:nowrap;border-radius:999px}
+  .tab.is-active{background:rgba(255,255,255,.18)}
+  .tab.is-active span{transform:none!important}
+
+  /* PROJECTS */
+  .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start;padding-top:24px}
+  .projects > *{grid-column:1/-1}
+  .projects > .card,.projects > .thumb{grid-column:auto}
+  .projects > .card-wide,.projects > .thumb-wide,.projects > .photo{grid-column:1/-1}
+  .projects > .thumb-wide[style*="17-5156"],.projects > .thumb-wide[style*="17-5158"]{display:none}
+  .card{padding:8px;border-radius:20px}
+  .card-img{height:auto;aspect-ratio:288/510;border-radius:12px}
+  .card-rule{width:60%;border-top-width:2px;margin:8px auto}
+  .card-meta{padding:0 4px 4px}
+  .card-row{height:auto;gap:6px;margin-bottom:4px;flex-wrap:wrap}
+  .card-brand{font-size:13px}
+  .card-cap{font-size:12px}
+  .badge{font-size:9px;padding:3px 8px}
+  .badge-img{height:14px}
+  .card-wide{gap:14px;padding-bottom:12px}
+  .card-wide .card-img{aspect-ratio:969/510}
+  .card-title{font-size:18px}
+  .etsuko-logo{width:min(220px,60%);aspect-ratio:249/173;height:auto;margin:16px auto 0}
+  .mascot{width:min(320px,86%);aspect-ratio:318/396;height:auto;margin:0 auto}
+  .brand-mark{height:52px;margin:28px 0 0}
+  .brand-pill{height:90px;width:min(260px,70%);margin:28px auto 0}
+  .brand-logo{width:70%;height:60px}
+  .desc-pill{white-space:normal;font-size:14px;padding:8px 16px;border-radius:22px;justify-self:center;width:fit-content;max-width:100%}
+  .desc{font-size:16px;text-align:center;max-width:560px;justify-self:center}
+  .sep{border-top-width:3px;margin:20px 0}
+  .thumb{aspect-ratio:267/474;border-radius:6px}
+  .thumb-wide{aspect-ratio:833/474}
+  .ph-meta p{font-size:16px;gap:8px;flex-wrap:wrap}
+  .ph-meta b{font-size:20px}
+  .ph-meta.right{text-align:left}
+  .ph-meta.right p{justify-content:flex-start}
+  .photo{aspect-ratio:365/622;border-radius:6px;max-width:520px;justify-self:center;width:100%}
+  .photo[style*="19-5195"]{aspect-ratio:915/687;max-width:none}
+
+  /* FOOTER */
+  .footer{min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;text-align:center}
+  .thanks{font-size:clamp(72px,24vw,200px);line-height:.85;width:auto}
+  .ft-row{flex-direction:column;align-items:center;gap:18px;font-size:18px;width:100%;overflow-wrap:anywhere}
+  .soc{gap:20px;flex-wrap:wrap;justify-content:center}
+}
+@media (min-width:600px) and (max-width:1024px){
+  :root{--m:32px}
+  .projects{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  .projects > .thumb{grid-column:auto}
+  .card-brand{font-size:15px}.card-cap{font-size:13px}.badge{font-size:10px}
+  .tab{font-size:18px;padding:14px}
+  .cred-h{font-size:44px}
+  .tools-lg{grid-template-columns:repeat(5,72px)}
+  .soft-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .soft-grid li{font-size:20px}
+  .logo{height:40px}
 }
