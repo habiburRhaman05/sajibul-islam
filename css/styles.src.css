@@ -150,7 +150,27 @@ img{display:block}
 .desc-pill.tint-b{background:#716d39}
 .desc{font:400 u(24)/1.21 var(--f-body);letter-spacing:.01em}
 .sep{border:0;border-top:u(8) solid rgba(255,255,255,.4);border-radius:9px}
-.thumb{border-radius:u(8)}
+.thumb{border-radius:u(8);display:block;overflow:hidden;cursor:pointer;color:#fff;transition:transform .25s ease,box-shadow .25s ease}
+/* 16:9 uploads: YouTube pads hqdefault with black bars (12.5% top and bottom); zoom just enough to crop them out */
+.thumb-land,.card-vid.land{background-size:auto 134%,cover}
+.card-vid{position:relative;display:block;overflow:hidden;cursor:pointer}
+.card-vid:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.thumb:hover,.thumb:focus-visible{transform:translateY(u(-6));box-shadow:0 u(14) u(28) rgba(0,0,0,.45)}
+.thumb:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.thumb::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.72));pointer-events:none}
+.thumb::after,.card-vid::after{content:"";position:absolute;left:50%;top:50%;width:u(92);height:u(65);margin:u(-32) 0 0 u(-46);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 48'%3E%3Cpath fill='%23f00' d='M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z'/%3E%3Cpath fill='%23fff' d='M45 24 27 14v20'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 u(4) u(10) rgba(0,0,0,.45));transition:transform .25s ease}
+.thumb:hover::after,.thumb:focus-visible::after,.card-vid:hover::after,.card-vid:focus-visible::after{transform:scale(1.12)}
+.thumb.is-playing,.card-vid.is-playing{cursor:default;transform:none!important;box-shadow:none}
+.thumb.is-playing::before,.thumb.is-playing::after,.thumb.is-playing .thumb-title,.thumb.is-playing .thumb-cat,.card-vid.is-playing::after{display:none}
+.thumb-note{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:u(18);padding:u(24);text-align:center;background:rgba(3,3,6,.9);font:500 u(22)/1.35 var(--f-body)}
+.thumb-note b{color:#c8f24a}
+.thumb-note a{padding:u(10) u(22);border-radius:999px;background:#fff;color:#111;font-weight:700;font-size:u(20)}
+.thumb-frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;z-index:2}
+.thumb-title{position:absolute;left:u(14);right:u(14);bottom:u(12);z-index:1;font:600 u(20)/1.2 var(--f-body);letter-spacing:.01em;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.thumb-wide .thumb-title{font-size:u(32);bottom:u(16);left:u(24)}
+.thumb-cat{position:absolute;left:u(24);bottom:u(62);z-index:1;font:600 u(18)/1 var(--f-body);letter-spacing:.04em;text-transform:uppercase;color:#c8f24a;text-shadow:0 1px 6px rgba(0,0,0,.7)}
 .ph-meta p{display:flex;align-items:baseline;gap:u(16);font:400 u(32)/1.19 var(--f-body)}
 .ph-meta p + p{margin-top:u(16)}
 .ph-meta b{font:700 u(36)/1.14 var(--f-head)}
@@ -255,7 +275,6 @@ img{display:block}
   .projects > *{grid-column:1/-1}
   .projects > .card,.projects > .thumb{grid-column:auto}
   .projects > .card-wide,.projects > .thumb-wide,.projects > .photo{grid-column:1/-1}
-  .projects > .thumb-wide[style*="17-5156"],.projects > .thumb-wide[style*="17-5158"]{display:none}
   .card{padding:8px;border-radius:20px}
   .card-img{height:auto;aspect-ratio:288/510;border-radius:12px}
   .card-rule{width:60%;border-top-width:2px;margin:8px auto}
@@ -277,6 +296,12 @@ img{display:block}
   .desc{font-size:16px;text-align:center;max-width:560px;justify-self:center}
   .sep{border-top-width:3px;margin:20px 0}
   .thumb{aspect-ratio:267/474;border-radius:6px}
+  .thumb::after,.card-vid::after{width:50px;height:35px;margin:-17px 0 0 -25px}
+  .card-wide .card-img{aspect-ratio:969/510}
+  .thumb-title{font-size:12px;left:8px;right:8px;bottom:8px}
+  .thumb-wide .thumb-title{font-size:16px;left:14px;bottom:10px}
+  .thumb-cat{font-size:11px;left:14px;bottom:34px}
+  .thumb-note{font-size:12px;gap:8px;padding:8px}.thumb-note a{font-size:11px;padding:6px 12px}
   .thumb-wide{aspect-ratio:833/474}
   .ph-meta p{font-size:16px;gap:8px;flex-wrap:wrap}
   .ph-meta b{font-size:20px}

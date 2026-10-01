@@ -14,6 +14,8 @@ The script reads `assets/manifest.json` (73 images: node id, format, scale) and 
 Filenames are node ids, e.g. `8-4086.jpg` is the hero background (node 8:4086).
 
 ## 2. Run
+Double-click `start-site.bat` (Windows). It starts a local server on port 8080 and opens the site; this is required for the YouTube videos to play inside the cards (YouTube refuses to embed in `file://` pages).
+
 Any static server works (fonts and asset paths are relative):
 ```bash
 npx serve .        # or: python3 -m http.server 8080
