@@ -144,6 +144,14 @@ img{display:block}
 .card-title{font:700 u(32)/1.17 var(--f-head);color:var(--cream);text-align:center}
 .etsuko-logo,.mascot,.brand-mark,.brand-logo{background-size:contain}
 .brand-pill{background:#fff;border-radius:u(64);display:grid;place-items:center}
+/* section headings for each group of videos */
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:u(14)}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:u(18);font:700 u(22)/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:#c8f24a}
+.sec-eyebrow::before,.sec-eyebrow::after{content:"";width:u(72);height:u(2);background:linear-gradient(90deg,rgba(200,242,74,0),#c8f24a)}
+.sec-eyebrow::after{transform:scaleX(-1)}
+.sec-head h2{font:800 u(64)/1.05 var(--f-head);letter-spacing:-.02em;color:#fff;text-shadow:0 u(2) u(18) rgba(0,0,0,.45)}
+.sec-head p{font:500 u(26)/1.35 var(--f-body);color:#fff;max-width:u(1200);text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 u(18) rgba(0,0,0,.55)}
+.sec-head h2{text-shadow:0 1px 3px rgba(0,0,0,.6),0 u(2) u(22) rgba(0,0,0,.6)}
 .desc-pill{display:flex;align-items:center;padding:u(4.7) u(11.35);border-radius:999px;font:600 u(22.7)/1.2 var(--f-body);color:#fff;white-space:nowrap}
 .desc-pill.dark{background:rgba(0,0,0,.4)}
 .desc-pill.tint-a{background:linear-gradient(90deg,#8a8f4a,#3c4620)}
@@ -195,7 +203,7 @@ img{display:block}
    + lime handles + cursor + bottom fade, in a 1920 x 1106 box.
    The artwork and the person are both pinned to the bottom edge of the hero
    section, so the person composite reads as the lower half of the artwork. */
-.hero-bg{bottom:0;height:auto}
+.hero-bg{bottom:auto}
 .hero-person{top:auto;bottom:0;background-size:100% 100%;background-position:top center}
 .name-rule{display:flex;align-items:center;justify-content:center;position:relative}
 .name-rule .rule{
@@ -242,7 +250,7 @@ img{display:block}
   .hero [style*="--x:"]{position:absolute;left:calc(var(--x) * var(--u));top:calc(var(--y) * var(--u))}
   .hero [style*="--w:"]{width:calc(var(--w) * var(--u))}
   .hero [style*="--h:"]{height:calc(var(--h) * var(--u))}
-  .hero .hero-bg{top:0;bottom:0;height:auto}
+  .hero .hero-bg{top:0;bottom:auto}
   .hero .hero-person{top:auto;bottom:0}
 
   /* CREDENTIALS: tools, soft skills, clients */
@@ -292,6 +300,10 @@ img{display:block}
   .brand-mark{height:52px;margin:28px 0 0}
   .brand-pill{height:90px;width:min(260px,70%);margin:28px auto 0}
   .brand-logo{width:70%;height:60px}
+  .sec-head{gap:8px;padding:28px 0 4px}
+  .sec-head > *{position:static}
+  .sec-eyebrow{font-size:12px;gap:10px}.sec-eyebrow::before,.sec-eyebrow::after{width:34px;height:2px}
+  .sec-head h2{font-size:30px}.sec-head p{font-size:15px}
   .desc-pill{white-space:normal;font-size:14px;padding:8px 16px;border-radius:22px;justify-self:center;width:fit-content;max-width:100%}
   .desc{font-size:16px;text-align:center;max-width:560px;justify-self:center}
   .sep{border-top-width:3px;margin:20px 0}
